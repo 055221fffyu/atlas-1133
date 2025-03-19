@@ -8,31 +8,19 @@
     <meta name="description" content="Free bootstrap template Atlas">
     <link rel="icon" href="img/favicon.png" sizes="32x32" type="image/png">
 
-    <!-- 內嵌關鍵CSS，首屏顯示的樣式 -->
-    <style>
-        /* 這裡可以放置頁面首屏顯示所需的關鍵 CSS，縮小頁面加載時間 */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        .jumbotron {
-            padding: 2rem;
-            background-color: #f8f9fa;
-        }
-        /* 其他關鍵樣式 */
-    </style>
-
-    <!-- 延遲載入的 CSS -->
-    <link rel="preload" href="css/bootstrap.min.css" as="style">
+    <!-- 延遲載入的 CSS (將 media 設為 print 來延遲加載) -->
     <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="css/aos.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="css/custom.min.css" media="print" onload="this.media='all'">
 
-    <!-- 減少 CSS 阻塞，並盡量使用非同步加載方式 -->
-    <noscript>
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-    </noscript>
+    <!-- 壓縮和合併的 custom.css -->
+    <link rel="stylesheet" href="css/custom.min.css" media="print" onload="this.media='all'">
+    <!-- 延遲載入的 Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" media="print" onload="this.media='all'">
+
+    <style>
+        /* 為了避免閃爍，初始化設置 */
+        .preload { display: none; }
+    </style>
 </head>
 
 <body>
@@ -60,8 +48,7 @@
         <a href="#" data-aos="fade" data-aos-easing="linear" data-aos-duration="1000" data-aos-once="true" class="btn my-4 font-weight-bold atlas-cta cta-green">Get Started</a>
     </div>
 </div>
-
-<!-- three-blcok -->
+<!-- three-block -->
 <div class="container my-5 py-2">
     <h2 class="text-center font-weight-bold my-5">Smartest protection for your site</h2>
     <div class="row">
@@ -82,7 +69,6 @@
         </div>
     </div>
 </div>
-
 <!-- feature (skew background) -->
 <div class="jumbotron jumbotron-fluid feature" id="feature-first">
     <div class="container my-5">
@@ -99,7 +85,6 @@
         </div>
     </div>
 </div>
-
 <!-- feature (green background) -->
 <div class="jumbotron jumbotron-fluid feature" id="feature-last">
     <div class="container">
@@ -158,7 +143,6 @@
         </div>
     </div>
 </div>
-
 <!-- client -->
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
@@ -184,7 +168,6 @@
         </div>
     </div>
 </div>
-
 <!-- contact -->
 <div class="jumbotron jumbotron-fluid" id="contact" style="background-image: url(img/contact-bk.jpg);">
     <div class="container my-5">
@@ -198,31 +181,62 @@
                 <ul class="list-unstyled">
                     <li>Email : company_email@com</li>
                     <li>Phone : 361-688-5824</li>
-                    <li>Address : 4826 White Avenue, Corpus Christi, TX 78894</li>
+                    <li>Address : 4826 White Avenue, Corpus Christi, Texas</li>
                 </ul>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-6">
                 <form>
-                    <input type="text" class="form-control mb-3" placeholder="Full Name">
-                    <input type="email" class="form-control mb-3" placeholder="Email Address">
-                    <textarea class="form-control mb-3" rows="4" placeholder="Message"></textarea>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="name">Your Name</label>
+                            <input type="name" class="form-control" id="name">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="Email">Your Email</label>
+                            <input type="email" class="form-control" id="Email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea class="form-control" id="message" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn font-weight-bold atlas-cta atlas-cta-wide cta-green my-3">Submit</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
 
-<!-- 延遲載入的 JavaScript -->
-<script src="js/aos.js" defer></script>
+<!-- copyright -->
+<div class="jumbotron jumbotron-fluid" id="copyright">
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-md-6 text-white align-self-center text-center text-md-left my-2">
+                Copyright © 2018 Chen, Yi-Ya.
+            </div>
+            <div class="col-md-6 align-self-center text-center text-md-right my-2" id="social-media">
+                <a href="#" class="d-inline-block text-center ml-2">
+                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                </a>
+                <a href="#" class="d-inline-block text-center ml-2">
+                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
+                <a href="#" class="d-inline-block text-center ml-2">
+                    <i class="fa fa-medium" aria-hidden="true"></i>
+                </a>
+                <a href="#" class="d-inline-block text-center ml-2">
+                    <i class="fa fa-linkedin" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- AOS -->
+<script src="js/aos.js"></script>
 <script>
     AOS.init();
 </script>
-
-<!-- 將不重要的 JavaScript 放置在頁面底部並使用 defer 或 async -->
-<script src="js/bootstrap.min.js" defer></script>
-<script src="js/jquery.min.js" async></script>
-
 </body>
 
 </html>
